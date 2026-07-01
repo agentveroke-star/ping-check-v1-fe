@@ -30,6 +30,7 @@ const StatusDisplay: React.FC = () => {
         lastUpdated: now,
       });
     } catch (error) {
+      console.error('Backend connection error:', error);
       setState(prev => ({
         ...prev,
         loading: false,
@@ -69,7 +70,7 @@ const StatusDisplay: React.FC = () => {
     try {
       const date = new Date(timestamp);
       return date.toLocaleString();
-    } catch (error) {
+    } catch {
       return timestamp;
     }
   };
